@@ -3,6 +3,14 @@ use strict;
 use warnings;
 our $VERSION = '0.01';
 
+package UNIVERSAL;
+
+sub filename {
+    my $class = shift;
+    $class =~ s{::}{/}g;
+    $INC{$class.".pm"};
+}
+
 1;
 __END__
 
