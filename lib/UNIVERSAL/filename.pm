@@ -3,6 +3,10 @@ use strict;
 use warnings;
 our $VERSION = '0.01';
 
+BEGIN {
+    require UNIVERSAL;
+}
+
 package UNIVERSAL;
 
 sub filename {
@@ -16,15 +20,27 @@ __END__
 
 =head1 NAME
 
-UNIVERSAL::filename -
+UNIVERSAL::filename - file location inspector of modules
 
 =head1 SYNOPSIS
 
-  use UNIVERSAL::filename;
+    use UNIVERSAL::filename;    # declare once
+
+    # lib/Foo.pm
+    package Foo;
+
+    package Bar;
+
+    1;
+
+    # any.pl
+    Foo->filename;              #=> 'lib/Foo.pm'
+    Bar->filename;              #=> undef
 
 =head1 DESCRIPTION
 
-UNIVERSAL::filename is
+Similiar to the 'require' operator, UNIVERSAL::filename inspects %INC to for the file location of a particular module.
+No magic here, that means you can't find the file location of a module embeded in the file that belongs to another module.
 
 =head1 AUTHOR
 
@@ -34,7 +50,6 @@ shelling E<lt>navyblueshellingford@gmail.comE<gt>
 
 =head1 LICENSE
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+The MIT License
 
 =cut
