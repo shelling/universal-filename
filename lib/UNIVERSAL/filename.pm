@@ -37,7 +37,7 @@ UNIVERSAL::filename - file location inspector of modules
 
 =head1 DESCRIPTION
 
-Similiar to the 'require' operator, UNIVERSAL::filename inspects %INC to for the file location of a particular module.
+Similiar to the 'require' operator, UNIVERSAL::filename inspects %INC for the file location of a particular module.
 No magic here, that means you can't find the file location of a module embeded in the file that belongs to another module.
 
 =head1 AUTHOR
