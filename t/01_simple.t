@@ -17,4 +17,10 @@ is (
     "Foo::Bar is t/lib/Foo/Bar.pm",
 );
 
+is (
+    Baz->filename,
+    undef,
+    "Baz didn't index filename in \%INC",
+);
+
 done_testing;

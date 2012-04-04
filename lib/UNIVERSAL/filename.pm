@@ -7,13 +7,11 @@ BEGIN {
     require UNIVERSAL;
 }
 
-package UNIVERSAL;
-
-sub filename {
+*UNIVERSAL::filename = sub {
     my $class = shift;
     $class =~ s{::}{/}g;
     $INC{$class.".pm"};
-}
+} unless defined &UNIVERSAL::filename;
 
 1;
 __END__
